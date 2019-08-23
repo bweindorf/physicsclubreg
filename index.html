@@ -5,22 +5,38 @@
 
     <body>
     <script>
+
 function postdata() {
 	var info = document.getElementsByClassName("fields");
-	var fname = info[0];
-	var lname = info[1];
-	var email = info[2];
+	var fname = info[0].value;
+	var lname = info[1].value;
+	var email = info[2].value;
 	console.log("fname: " + fname + " lname: " + lname + " email: " + email);
+	var hr = new XMLHttpRequest();
+	hr.onreadystatechange = function() {
+		if (hr.readyState == 4 && hr.status == 200) {
+			var return_data = hr.responseText;
+			console.log(return_data);
+		}
+	}
+        var link = 'adder.php';
+	var params = "fname=" + fname + "&lname=" + lname + "&email=" + email;
+	hr.open("POST", link, true);
+	hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	hr.send(params);
+
+
 }
 
     </script>
+
          <h1> Welcome to the Physics Club Table! </h1>
          <br>
          <br>
          <p> Please enter your first name, last name and email to register for the club. </p>
 
          <br>
-       <form>
+       <div>
            First Name: 
            <input class = "fields" type = "text" name = "fname" placeholder = "first name">
            Last Name:
@@ -28,9 +44,10 @@ function postdata() {
            Email:
            <input class = "fields" type = "text" name = "email" placeholder = "student@messiah.edu">
            <input type = "submit" onclick = 'postdata()'  value = "Submit">
-       </form>
+       </div>
 
     </body>
 </html>
+
 
 
