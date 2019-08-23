@@ -13,9 +13,15 @@ else {
 
 function addtodb($fname, $lname, $email) {
 	$database = new SQLite3('/var/physicsclubinfo.db');
-	$sql = "INSERT INTO members (firstname, lastname, email) VALUES ('$fname', '$lname', '$email')";
-	$database->query($sql);
-	echo "Welcome to the Physics Club $fname $lname!";
+	$database->enableExceptions(true);
+	try {
+	    $sql = "INSERT INTO members (firstname, lastname, email) VALUES ('$fname', '$lname', '$email')";
+	    $database->query($sql);
+	    echo "Welcome to the Physics Club $fname $lname!";
+	}
+	catch (SQLite3::IntegrityError) {
+		echo "Failed"
+	}
 
 }
 ?>

@@ -11,12 +11,15 @@ function postdata() {
 	var fname = info[0].value;
 	var lname = info[1].value;
 	var email = info[2].value;
-	console.log("fname: " + fname + " lname: " + lname + " email: " + email);
+	//console.log("fname: " + fname + " lname: " + lname + " email: " + email);
 	var hr = new XMLHttpRequest();
 	hr.onreadystatechange = function() {
 		if (hr.readyState == 4 && hr.status == 200) {
 			var return_data = hr.responseText;
-			console.log(return_data);
+			alert(return_data);
+			for (var i =  0; i < 3; i ++) {
+				document.getElementsByClassName("fields")[i].value = "";
+			}
 		}
 	}
         var link = 'adder.php';
@@ -45,6 +48,7 @@ function postdata() {
            <input class = "fields" type = "text" name = "email" placeholder = "student@messiah.edu">
            <input type = "submit" onclick = 'postdata()'  value = "Submit">
        </div>
+       <div id = "return"></div>
 
     </body>
 </html>
