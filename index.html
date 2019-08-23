@@ -1,0 +1,36 @@
+<html> 
+    <head> 
+         <title> Physics Club Registration </title>
+    <head>
+
+    <body>
+    <script>
+function postdata() {
+	var info = document.getElementsByClassName("fields");
+	var fname = info[0];
+	var lname = info[1];
+	var email = info[2];
+	console.log("fname: " + fname + " lname: " + lname + " email: " + email);
+}
+
+    </script>
+         <h1> Welcome to the Physics Club Table! </h1>
+         <br>
+         <br>
+         <p> Please enter your first name, last name and email to register for the club. </p>
+
+         <br>
+       <form>
+           First Name: 
+           <input class = "fields" type = "text" name = "fname" placeholder = "first name">
+           Last Name:
+           <input class = "fields" type = "text" name = "lname" placeholder  = "last name">
+           Email:
+           <input class = "fields" type = "text" name = "email" placeholder = "student@messiah.edu">
+           <input type = "submit" onclick = 'postdata()'  value = "Submit">
+       </form>
+
+    </body>
+</html>
+
+
