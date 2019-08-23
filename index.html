@@ -11,7 +11,7 @@ function postdata() {
 	var fname = info[0].value;
 	var lname = info[1].value;
 	var email = info[2].value;
-	//console.log("fname: " + fname + " lname: " + lname + " email: " + email);
+	console.log("fname: " + fname + " lname: " + lname + " email: " + email);
 	var hr = new XMLHttpRequest();
 	hr.onreadystatechange = function() {
 		if (hr.readyState == 4 && hr.status == 200) {
